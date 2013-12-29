@@ -40,5 +40,7 @@
     <gap:platform name="winphone" />
 
     <!-- deny access to all external resources but the map tiles -->
-    <access origin="http://tile.openstreetmap.fr" subdomains="true" />
+    <access origin="http://a.tile.openstreetmap.fr" />
+    <access origin="http://b.tile.openstreetmap.fr" />
+    <access origin="http://c.tile.openstreetmap.fr" />
 </widget>
