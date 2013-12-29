@@ -1,12 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Phonegap Test</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        Yeah
-    </body>
+<html ng-app="jamthegame" ng-controller="AppCtrl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Phonegap Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link type="text/css" rel="stylesheet" href="vendor/css/bootstrap-3.0.3.min.css" media="all"/>
+
+    <script type="text/javascript" src="vendor/js/angular-1.2.6.min.js"></script>
+    <script type="text/javascript" src="vendor/js/ui-bootstrap-tpls-0.9.0.min.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Tasks</h1>
+
+    <div class="row" ng-repeat="task in tasks">
+        <div class="col-xs-10 col-sm-11">
+            <button type="button" class="btn btn-block" ng-class="{'btn-success': task.complete}" ng-model="task.complete" btn-checkbox>
+                <span class="glyphicon glyphicon-ok" ng-show="task.complete"></span> {{ task.name }}
+            </button>
+        </div>
+        <div class="col-xs-2 col-sm-1">
+            <button type="button" class="btn pull-right btn-danger" ng-click="removeTask(task)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+    </div>
+
+    <hr/>
+    <div class="row">
+        <div class="col-xs-10 col-sm-11">
+            <input class="form-control" type="text" ng-model="newTaskName"
+             placeholder="New task"/>
+        </div>
+        <div class="col-xs-2 col-sm-1">
+            <button class="btn pull-right btn-primary" ng-click="createNewTask()">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+</body>
 </html>
