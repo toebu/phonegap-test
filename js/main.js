@@ -60,4 +60,30 @@
             taskProvider.persist();
         }, true);
     });
+
+    jamthegame.constant('leaflet', window.L);
+
+    jamthegame.directive('map', ['leaflet', function(L) {
+        var numMaps = 0;
+
+        return {
+            restrict: 'A',
+            scope: {},
+            link: function (scope, elem) {
+                var mapId = 'map-' + numMaps;
+                numMaps += 1;
+                elem.attr('id', mapId);
+
+                var map = L.map(mapId);
+
+                map.setView([46.948006, 7.444689], 13);
+
+                 L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="http://openstreetmap.org">OSM</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a> | Tiles: <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OSM</a>'
+                }).addTo(map);
+
+                L.marker([46.948006, 7.444689]).addTo(map);
+            }
+        };
+    }]);
 })();
