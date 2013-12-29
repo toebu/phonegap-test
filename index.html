@@ -13,6 +13,7 @@
 
     <script type="text/javascript" src="vendor/js/angular-1.2.6.min.js"></script>
     <script type="text/javascript" src="vendor/js/ui-bootstrap-tpls-0.9.0.min.js"></script>
+    <script type="text/javascript" src="vendor/js/angular-ui-router-0.2.7.min.js"></script>
 
     <script type="text/javascript" src="vendor/js/leaflet-0.7.1.min.js"></script>
 
@@ -21,38 +22,47 @@
 <body>
 
 <div class="container">
-    <h1>Tasks</h1>
+    <button type="button" class="btn btn-block" ng-show="!$state.includes('tasks')" ng-click="$state.go('tasks')">
+        Tasks
+    </button>
+    <button type="button" class="btn btn-block" ng-show="!$state.includes('map')" ng-click="$state.go('map')">
+        Map
+    </button>
 
-    <div class="row" ng-repeat="task in tasks">
-        <div class="col-xs-10 col-sm-11">
-            <button type="button" class="btn btn-block" ng-class="{'btn-success': task.complete}" ng-model="task.complete" btn-checkbox>
-                <span class="glyphicon glyphicon-ok" ng-show="task.complete"></span> {{ task.name }}
-            </button>
+    <div ng-show="$state.includes('tasks')">
+        <h1>Tasks</h1>
+
+        <div class="row" ng-repeat="task in tasks">
+            <div class="col-xs-10 col-sm-11">
+                <button type="button" class="btn btn-block" ng-class="{'btn-success': task.complete}" ng-model="task.complete" btn-checkbox>
+                    <span class="glyphicon glyphicon-ok" ng-show="task.complete"></span> {{ task.name }}
+                </button>
+            </div>
+            <div class="col-xs-2 col-sm-1">
+                <button type="button" class="btn pull-right btn-danger" ng-click="removeTask(task)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
         </div>
-        <div class="col-xs-2 col-sm-1">
-            <button type="button" class="btn pull-right btn-danger" ng-click="removeTask(task)">
-                <span class="glyphicon glyphicon-remove"></span>
-            </button>
+
+        <hr/>
+        <div class="row">
+            <div class="col-xs-10 col-sm-11">
+                <input class="form-control" type="text" ng-model="newTaskName"
+                 placeholder="New task"/>
+            </div>
+            <div class="col-xs-2 col-sm-1">
+                <button class="btn pull-right btn-primary" ng-click="createNewTask()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
         </div>
     </div>
-
-    <hr/>
-    <div class="row">
-        <div class="col-xs-10 col-sm-11">
-            <input class="form-control" type="text" ng-model="newTaskName"
-             placeholder="New task"/>
-        </div>
-        <div class="col-xs-2 col-sm-1">
-            <button class="btn pull-right btn-primary" ng-click="createNewTask()">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        </div>
-    </div>
-
-    <hr/>
 </div>
 
-<div class="main-map" map></div>
+<div ng-show="$state.includes('map')">
+    <div class="main-map" map></div>
+</div>
 
 </body>
 </html>
