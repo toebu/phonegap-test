@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+ xmlns:gap = "http://phonegap.com/ns/1.0"
+ id = "com.example.toebu.phonegap-test"
+ versionCode = "1" 
+ version = "0.0.1">
+
+    <name>PhoneGap Test</name>
+
+    <description>
+        Just testing.
+    </description>
+
+    <author email="leugger.tobias@web.de">
+        Tobias Leugger
+    </author>
+
+    <!-- settings for all systems -->
+    <preference name="phonegap-version" value="3.1.0" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+
+    <!-- ios settings -->
+    <preference name="prerendered-icon" value="true" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="false" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="auto-hide-splash-screen" value="true" />
+
+    <!-- blackberry settings -->
+    <preference name="disable-cursor" value="false" />
+
+    <!-- android settings -->
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+
+    <!-- only build for these systems -->
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+    <gap:platform name="winphone" />
+</widget>
