@@ -3,7 +3,7 @@
  xmlns:gap = "http://phonegap.com/ns/1.0"
  id = "com.example.toebu.phonegap-test"
  versionCode = "1" 
- version = "0.0.7">
+ version = "0.0.8">
 
     <name>jamthegame</name>
 
@@ -38,4 +38,7 @@
     <gap:platform name="ios" />
     <gap:platform name="android" />
     <gap:platform name="winphone" />
+
+    <!-- deny all access to external resources-->
+    <access />
 </widget>
