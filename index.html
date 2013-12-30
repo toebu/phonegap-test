@@ -11,11 +11,11 @@
 
     <link type="text/css" rel="stylesheet" href="css/main.css" media="all"/>
 
+    <script type="text/javascript" src="vendor/js/leaflet-0.7.1.min.js"></script>
     <script type="text/javascript" src="vendor/js/angular-1.2.6.min.js"></script>
     <script type="text/javascript" src="vendor/js/ui-bootstrap-tpls-0.9.0.min.js"></script>
     <script type="text/javascript" src="vendor/js/angular-ui-router-0.2.7.min.js"></script>
-
-    <script type="text/javascript" src="vendor/js/leaflet-0.7.1.min.js"></script>
+    <script type="text/javascript" src="vendor/js/angular-leaflet-directive-0.7.2.min.js"></script>
 
     <script type="text/javascript" src="js/main.js"></script>
 </head>
@@ -61,7 +61,20 @@
 </div>
 
 <div ng-show="$state.includes('map')">
-    <div class="main-map" map></div>
+    <leaflet class="main-map" defaults="mapDefaults" center="mapCentre" markers="mapMarkers" event-broadcast="mapEvents"></leaflet>
+
+    <div class="container">
+        <div class="row" ng-repeat="marker in mapMarkers">
+            <div class="col-xs-10 col-sm-11">
+                Marker at: {{ marker.lat | number:6 }}, {{ marker.lng | number:6 }}
+            </div>
+            <div class="col-xs-2 col-sm-1">
+                <button type="button" class="btn pull-right btn-danger" ng-click="removeMarker(marker)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
